@@ -7,7 +7,7 @@ ini_set('display_errors', 0);
 $host = getenv('DB_HOST') ?: "gateway01.ap-southeast-1.prod.alicloud.tidbcloud.com";
 $banco = getenv('DB_NAME') ?: "test";
 $usuario = getenv('DB_USER') ?: "4AD79M25udvWBbf.root";
-$senha = getenv('DB_PASSWORD') ?: "4owCBz1ZVlUYOB9P";
+$senha = getenv('DB_PASSWORD') ?: "3rqS49iVjBUIzJdk";
 $porta = getenv('DB_PORT') ?: 4000;
 
 try {
