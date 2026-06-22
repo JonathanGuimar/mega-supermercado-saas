@@ -7,10 +7,10 @@ $senha = "ox5Jhw6PRooMOMGC";
 $porta = 4000; 
 
 try {
-    // Compatibilidade universal para o SSL na Vercel sem gerar avisos de Deprecated
+    // Usando o escopo correto da classe Mysql para ativar o SSL no PHP moderno da Vercel
     $opcoes = [
-        "mysql_attr_ssl_ca" => true,
-        "mysql_attr_ssl_verify_server_cert" => false
+        \PDO\Mysql::ATTR_SSL_CA => true,
+        \PDO\Mysql::ATTR_SSL_VERIFY_SERVER_CERT => false
     ];
 
     $pdo = new PDO("mysql:host=$host;port=$porta;dbname=$banco;charset=utf8", $usuario, $senha, $opcoes);
