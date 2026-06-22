@@ -3,7 +3,7 @@
 error_reporting(E_ALL & ~E_DEPRECATED);
 ini_set('display_errors', 0);
 
-// Puxando as credenciais de forma segura do Environment Variables da Vercel
+// Credenciais dinâmicas (Tenta ler a Vercel; se não achar, usa o plano B)
 $host = getenv('DB_HOST') ?: "gateway01.ap-southeast-1.prod.alicloud.tidbcloud.com";
 $banco = getenv('DB_NAME') ?: "test";
 $usuario = getenv('DB_USER') ?: "4AD79M25udvWBbf.root";
