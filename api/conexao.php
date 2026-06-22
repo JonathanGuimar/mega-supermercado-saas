@@ -1,7 +1,7 @@
 <?php
-// Credenciais do TiDB Cloud corrigidas
+// Credenciais corrigidas com o banco real do seu painel do TiDB
 $host = "gateway01.ap-southeast-1.prod.alicloud.tidbcloud.com"; 
-$banco = "mega_supermercado"; 
+$banco = "megasupermercadotemperatura"; // Nome exato do seu banco no painel!
 $usuario = "4AD79M25udvWBbf.root"; 
 $senha = "ox5Jhw6PRooMOMGC"; 
 $porta = 4000; 
