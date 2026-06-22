@@ -3,18 +3,18 @@
 error_reporting(E_ALL & ~E_DEPRECATED);
 ini_set('display_errors', 0);
 
-// Credenciais do TiDB Cloud atualizadas
-$host = "gateway01.ap-southeast-1.prod.alicloud.tidbcloud.com"; 
-$banco = "test"; // Base padrão criada automaticamente pelo TiDB
-$usuario = "4AD79M25udvWBbf.root"; 
-$senha = "4owCBz1ZVlUYOB9P"; // Sua nova senha resetada
-$porta = 4000; 
+// Puxando as credenciais de forma segura do Environment Variables da Vercel
+$host = getenv('DB_HOST') ?: "gateway01.ap-southeast-1.prod.alicloud.tidbcloud.com";
+$banco = getenv('DB_NAME') ?: "test";
+$usuario = getenv('DB_USER') ?: "4AD79M25udvWBbf.root";
+$senha = getenv('DB_PASSWORD') ?: "4owCBz1ZVlUYOB9P";
+$porta = getenv('DB_PORT') ?: 4000;
 
 try {
-    // Configuração de SSL compatível com o ambiente Vercel
+    // Configuração de SSL compatível com o ambiente Vercel (PHP 8.5+)
     $opcoes = [
-        PDO::MYSQL_ATTR_SSL_CA => true,
-        PDO::MYSQL_ATTR_SSL_VERIFY_SERVER_CERT => false
+        defined('Pdo\Mysql::ATTR_SSL_CA') ? \Pdo\Mysql::ATTR_SSL_CA : PDO::MYSQL_ATTR_SSL_CA => true,
+        defined('Pdo\Mysql::ATTR_SSL_VERIFY_SERVER_CERT') ? \Pdo\Mysql::ATTR_SSL_VERIFY_SERVER_CERT : PDO::MYSQL_ATTR_SSL_VERIFY_SERVER_CERT => false
     ];
 
     $pdo = new PDO("mysql:host=$host;port=$porta;dbname=$banco;charset=utf8", $usuario, $senha, $opcoes);
